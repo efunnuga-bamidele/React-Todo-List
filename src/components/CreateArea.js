@@ -3,6 +3,7 @@ import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 
 export default function CreateArea({ onAdd }){
+    const [isExpanded, setIsExpanded] = useState(false)
     const [note, setNote] = useState({
         title: '',
         content: ''
@@ -30,9 +31,12 @@ export default function CreateArea({ onAdd }){
         })
     }
 
+    const handleExpanded = () => setIsExpanded(true)
+
     return(
         <div>
             <form className="create-note">
+            {isExpanded && (
                 <input 
                     type="text" 
                     name="title"
@@ -40,11 +44,13 @@ export default function CreateArea({ onAdd }){
                     value={note.title}
                     onChange={handleChange} 
                 />
+            )}
                 <textarea 
                     name="content" 
-                    rows="3"
+                    rows={isExpanded ? '3' : '1'}
                     placeholder='Take a note...' 
                     value={note.content}
+                    onClick={handleExpanded}
                     onChange={handleChange}
                 />
                 <Fab onClick={submitNote}>

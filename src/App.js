@@ -5,6 +5,9 @@ import './App.css';
 import Header from './components/Header'
 import CreateArea from './components/CreateArea';
 import Note from './components/Note';
+import Footer from './components/Footer';
+
+//Hooks
 import { useState } from 'react';
 
 function App() {
@@ -41,7 +44,7 @@ function App() {
       />
       
     ))}
-      
+      <Footer />
     </div>
   );
 }
